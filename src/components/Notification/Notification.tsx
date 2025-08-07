@@ -2,8 +2,8 @@ import css from "./Notification.module.css";
 
 export default function Notification() {
   return (
-    <div>
-      <p>Notification component</p>
+    <div className={css.notification}>
+      <p>No feedback yet</p>
     </div>
   );
 }
