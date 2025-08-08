@@ -1,4 +1,7 @@
 // App.tsx
+// Main component of the app
+// Holds the state for votes and renders other components
+
 import { useState } from "react";
 import css from "./App.module.css";
 import CafeInfo from "../CafeInfo/CafeInfo";
@@ -20,7 +23,8 @@ export default function App() {
       [type]: prevVotes[type] + 1,
     }));
   };
-
+  
+   // Resets all votes to zero
   const resetVotes = () => {
     setVotes({
       good: 0,
@@ -29,16 +33,27 @@ export default function App() {
     });
   };
 
+  // Calculates total number of votes
   const total = votes.good + votes.neutral + votes.bad;
+  // Calculates percentage of positive (good) votes
+  const positiveRate = total > 0 ? Math.round((votes.good / total) * 100) : 0;
 
   return (
     <div className={css.app}>
       <CafeInfo />
-      <VoteOptions onVote={handleVote} onReset={resetVotes} />
+      <VoteOptions
+        onVote={handleVote}
+        onReset={resetVotes}
+        canReset={total > 0}
+      />
       {total > 0 ? (
-        <VoteStats votes={votes} />
+        <VoteStats
+          votes={votes}
+          totalVotes={total}
+          positiveRate={positiveRate}
+        />
       ) : (
-        <Notification/>
+        <Notification />
       )}
     </div>
   );

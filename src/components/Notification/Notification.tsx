@@ -1,9 +1,8 @@
+// Notification.tsx
+// Renders a message when no feedback has been given
+
 import css from "./Notification.module.css";
 
 export default function Notification() {
-  return (
-    <div className={css.notification}>
-      <p>No feedback yet</p>
-    </div>
-  );
+  return <p className={css.message}>No feedback yet</p>;
 }

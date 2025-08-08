@@ -1,3 +1,6 @@
+// CafeInfo.tsx
+// Renders the title and description of the café
+
 import css from "./CafeInfo.module.css";
 
 export default function CafeInfo() {
